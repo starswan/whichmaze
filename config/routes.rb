@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :maze_walls
   resources :mazes
   resources :maze_walls
   resources :mazes

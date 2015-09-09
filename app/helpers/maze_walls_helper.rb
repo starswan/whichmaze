@@ -1,0 +1,2 @@
+module MazeWallsHelper
+end

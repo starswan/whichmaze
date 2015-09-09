@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909113850) do
+ActiveRecord::Schema.define(version: 20150909115146) do
+
+  create_table "maze_walls", force: :cascade do |t|
+    t.integer  "maze_id"
+    t.integer  "xposition"
+    t.integer  "yposition"
+    t.boolean  "right"
+    t.boolean  "down"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "mazes", force: :cascade do |t|
     t.integer  "width"
