@@ -46,3 +46,4 @@ group :development do
 end
 
 gem "rspec-rails", :group => [:development, :test]
+gem 'twitter-bootstrap-rails'
