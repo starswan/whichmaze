@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mazes
   resources :maze_walls
   resources :mazes
   # The priority is based upon order of creation: first created -> highest priority.
