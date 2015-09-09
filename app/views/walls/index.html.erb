@@ -1,27 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<b>Listing Maze Walls for id <%= @maze.id %> Height: <%= @maze.height %> Width: <%= @maze.width %></b>
+<b>Walls for maze id <%= @maze.id %> Height: <%= @maze.height %> Width: <%= @maze.width %></b>
+<p>
+    <img src="<%= maze_walls_path(@maze, :format => :svg) %>"/>
+</p>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Xposition</th>
-      <th>Yposition</th>
-      <th>Right</th>
-      <th>Down</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @walls.each do |wall| %>
-      <tr>
-        <td><%= wall.xposition %></td>
-        <td><%= wall.yposition %></td>
-        <td><%= wall.right %></td>
-        <td><%= wall.down %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 <%= link_to t('.back', :default => t("helpers.links.back")),
             mazes_path, :class => 'btn btn-default' %>
