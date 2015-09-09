@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Maze Walls for id <%= @maze.id %> Height: <%= @maze.height %> Width: <%= @maze.width %></h1>
+<b>Listing Maze Walls for id <%= @maze.id %> Height: <%= @maze.height %> Width: <%= @maze.width %></b>
 
 <table class="table table-striped">
   <thead>
@@ -23,3 +23,5 @@
     <% end %>
   </tbody>
 </table>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+            mazes_path, :class => 'btn btn-default' %>

@@ -1,6 +1,6 @@
 <%- model_class = Maze -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <b><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></b>
 </div>
 <table class="table table-striped">
   <thead>
@@ -18,8 +18,10 @@
         <td><%= maze.width %></td>
         <td><%= maze.height %></td>
         <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      maze_maze_walls_path(maze), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_maze_path(maze), :class => 'btn btn-default btn-xs' %>
+                      edit_maze_path(maze), :class => 'btn btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       maze_path(maze),
                       :method => :delete,
