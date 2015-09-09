@@ -1,14 +1,21 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Maze -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Width:</strong>
-  <%= @maze.width %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:width) %>:</strong></dt>
+  <dd><%= @maze.width %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:height) %>:</strong></dt>
+  <dd><%= @maze.height %></dd>
+</dl>
 
-<p>
-  <strong>Height:</strong>
-  <%= @maze.height %>
-</p>
-
-<%= link_to 'Edit', edit_maze_path(@maze) %> |
-<%= link_to 'Back', mazes_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              mazes_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_maze_path(@maze), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              maze_path(@maze),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

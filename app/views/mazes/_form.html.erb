@@ -1,25 +1,38 @@
-<%= form_for(@maze) do |f| %>
-  <% if @maze.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@maze.errors.count, "error") %> prohibited this maze from being saved:</h2>
+<%= form_for @maze, :html => { :class => "form-horizontal maze" } do |f| %>
 
-      <ul>
-      <% @maze.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @maze.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@maze.errors.count, "error") %> prohibited this maze from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @maze.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :width %><br>
-    <%= f.number_field :width %>
+  <div class="control-group">
+    <%= f.label :width, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :width, :class => 'form-control' %>
+    </div>
+    <%= error_span(@maze[:width]) %>
   </div>
-  <div class="field">
-    <%= f.label :height %><br>
-    <%= f.number_field :height %>
+  <div class="control-group">
+    <%= f.label :height, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :height, :class => 'form-control' %>
+    </div>
+    <%= error_span(@maze[:height]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            mazes_path, :class => 'btn btn-default' %>
+
 <% end %>
