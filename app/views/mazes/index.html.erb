@@ -14,7 +14,7 @@
   <tbody>
     <% @mazes.each do |maze| %>
       <tr>
-        <td><%= link_to maze.id, maze_path(maze) %></td>
+        <td><%= link_to maze.id, maze_maze_walls_path(maze) %></td>
         <td><%= maze.width %></td>
         <td><%= maze.height %></td>
         <td>
