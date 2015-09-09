@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "mazes/index", type: :view do
+RSpec.describe "mazes/index", :type => :view do
   before(:each) do
     assign(:mazes, [
       Maze.create!(

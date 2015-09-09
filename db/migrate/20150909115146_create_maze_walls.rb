@@ -7,7 +7,7 @@ class CreateMazeWalls < ActiveRecord::Migration
       t.boolean :right
       t.boolean :down
 
-      t.timestamps null: false
+      t.timestamps :null => false
     end
   end
 end

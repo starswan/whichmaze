@@ -18,17 +18,19 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe MazesController, type: :controller do
+RSpec.describe MazesController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Maze. As you add validations to Maze, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    # skip("Add a hash of attributes valid for your model")
+    { :width => 1, :height => 1 }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    # skip("Add a hash of attributes invalid for your model")
+    { :width => 0, :height => -1 }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +105,16 @@ RSpec.describe MazesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        # skip("Add a hash of attributes valid for your model")
+        { :height => 3 }
       }
 
       it "updates the requested maze" do
         maze = Maze.create! valid_attributes
         put :update, {:id => maze.to_param, :maze => new_attributes}, valid_session
         maze.reload
-        skip("Add assertions for updated state")
+        # skip("Add assertions for updated state")
+        expect(maze.height).to eq(3)
       end
 
       it "assigns the requested maze as @maze" do
