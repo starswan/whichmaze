@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe MazesController, type: :routing do
+RSpec.describe MazesController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
