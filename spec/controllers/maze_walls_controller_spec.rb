@@ -20,15 +20,10 @@ require 'rails_helper'
 
 RSpec.describe MazeWallsController, :type => :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # MazeWall. As you add validations to MazeWall, be sure to
-  # adjust the attributes here as well.
   let(:valid_maze_attributes) {
-    # skip("Add a hash of attributes valid for your model")
     { :width => 1, :height => 2 }
   }
   let(:valid_wall_attributes) {
-    # skip("Add a hash of attributes valid for your model")
     { :xposition => 1, :yposition => 2, :right => false, :down => false}
   }
 
@@ -42,124 +37,12 @@ RSpec.describe MazeWallsController, :type => :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all maze_walls as @maze_walls" do
+    it "assigns maze_walls from specific maze as @maze_walls" do
       maze = Maze.create! valid_maze_attributes
       maze_wall = maze.maze_walls.create! valid_wall_attributes
-      get :index, {}, valid_session
+      get :index, { :maze_id => maze.id }, valid_session
       expect(assigns(:maze_walls)).to eq([maze_wall])
     end
   end
-
-  # describe "GET #show" do
-  #   it "assigns the requested maze_wall as @maze_wall" do
-  #     maze_wall = MazeWall.create! valid_attributes
-  #     get :show, {:id => maze_wall.to_param}, valid_session
-  #     expect(assigns(:maze_wall)).to eq(maze_wall)
-  #   end
-  # end
-  #
-  # describe "GET #new" do
-  #   it "assigns a new maze_wall as @maze_wall" do
-  #     get :new, {}, valid_session
-  #     expect(assigns(:maze_wall)).to be_a_new(MazeWall)
-  #   end
-  # end
-  #
-  # describe "GET #edit" do
-  #   it "assigns the requested maze_wall as @maze_wall" do
-  #     maze_wall = MazeWall.create! valid_attributes
-  #     get :edit, {:id => maze_wall.to_param}, valid_session
-  #     expect(assigns(:maze_wall)).to eq(maze_wall)
-  #   end
-  # end
-  #
-  # describe "POST #create" do
-  #   context "with valid params" do
-  #     it "creates a new MazeWall" do
-  #       expect {
-  #         post :create, {:maze_wall => valid_attributes}, valid_session
-  #       }.to change(MazeWall, :count).by(1)
-  #     end
-  #
-  #     it "assigns a newly created maze_wall as @maze_wall" do
-  #       post :create, {:maze_wall => valid_attributes}, valid_session
-  #       expect(assigns(:maze_wall)).to be_a(MazeWall)
-  #       expect(assigns(:maze_wall)).to be_persisted
-  #     end
-  #
-  #     it "redirects to the created maze_wall" do
-  #       post :create, {:maze_wall => valid_attributes}, valid_session
-  #       expect(response).to redirect_to(MazeWall.last)
-  #     end
-  #   end
-  #
-  #   context "with invalid params" do
-  #     it "assigns a newly created but unsaved maze_wall as @maze_wall" do
-  #       post :create, {:maze_wall => invalid_attributes}, valid_session
-  #       expect(assigns(:maze_wall)).to be_a_new(MazeWall)
-  #     end
-  #
-  #     it "re-renders the 'new' template" do
-  #       post :create, {:maze_wall => invalid_attributes}, valid_session
-  #       expect(response).to render_template("new")
-  #     end
-  #   end
-  # end
-  #
-  # describe "PUT #update" do
-  #   context "with valid params" do
-  #     let(:new_attributes) {
-  #       skip("Add a hash of attributes valid for your model")
-  #     }
-  #
-  #     it "updates the requested maze_wall" do
-  #       maze_wall = MazeWall.create! valid_attributes
-  #       put :update, {:id => maze_wall.to_param, :maze_wall => new_attributes}, valid_session
-  #       maze_wall.reload
-  #       skip("Add assertions for updated state")
-  #     end
-  #
-  #     it "assigns the requested maze_wall as @maze_wall" do
-  #       maze_wall = MazeWall.create! valid_attributes
-  #       put :update, {:id => maze_wall.to_param, :maze_wall => valid_attributes}, valid_session
-  #       expect(assigns(:maze_wall)).to eq(maze_wall)
-  #     end
-  #
-  #     it "redirects to the maze_wall" do
-  #       maze_wall = MazeWall.create! valid_attributes
-  #       put :update, {:id => maze_wall.to_param, :maze_wall => valid_attributes}, valid_session
-  #       expect(response).to redirect_to(maze_wall)
-  #     end
-  #   end
-  #
-  #   context "with invalid params" do
-  #     it "assigns the maze_wall as @maze_wall" do
-  #       maze_wall = MazeWall.create! valid_attributes
-  #       put :update, {:id => maze_wall.to_param, :maze_wall => invalid_attributes}, valid_session
-  #       expect(assigns(:maze_wall)).to eq(maze_wall)
-  #     end
-  #
-  #     it "re-renders the 'edit' template" do
-  #       maze_wall = MazeWall.create! valid_attributes
-  #       put :update, {:id => maze_wall.to_param, :maze_wall => invalid_attributes}, valid_session
-  #       expect(response).to render_template("edit")
-  #     end
-  #   end
-  # end
-  #
-  # describe "DELETE #destroy" do
-  #   it "destroys the requested maze_wall" do
-  #     maze_wall = MazeWall.create! valid_attributes
-  #     expect {
-  #       delete :destroy, {:id => maze_wall.to_param}, valid_session
-  #     }.to change(MazeWall, :count).by(-1)
-  #   end
-  #
-  #   it "redirects to the maze_walls list" do
-  #     maze_wall = MazeWall.create! valid_attributes
-  #     delete :destroy, {:id => maze_wall.to_param}, valid_session
-  #     expect(response).to redirect_to(maze_walls_url)
-  #   end
-  # end
 
 end
