@@ -24,12 +24,10 @@ RSpec.describe MazesController, :type => :controller do
   # Maze. As you add validations to Maze, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    # skip("Add a hash of attributes valid for your model")
     { :width => 1, :height => 1 }
   }
 
   let(:invalid_attributes) {
-    # skip("Add a hash of attributes invalid for your model")
     { :width => 0, :height => -1 }
   }
 
