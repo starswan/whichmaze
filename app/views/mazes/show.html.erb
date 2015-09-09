@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @maze.height %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @maze.width %>
+</p>
+
+<%= link_to 'Edit', edit_maze_path(@maze) %> |
+<%= link_to 'Back', mazes_path %>
