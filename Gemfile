@@ -48,3 +48,5 @@ end
 gem "rspec-rails", :group => [:development, :test]
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+# For XML SVG output
+gem 'nokogiri'
