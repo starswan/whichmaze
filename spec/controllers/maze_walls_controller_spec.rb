@@ -24,7 +24,7 @@ RSpec.describe MazeWallsController, :type => :controller do
     { :width => 1, :height => 2 }
   }
   let(:valid_wall_attributes) {
-    { :xposition => 1, :yposition => 2, :right => false, :down => false}
+    { :xposition => 1, :yposition => 2, :right => false, :down => false }
   }
 
   # let(:invalid_attributes) {
@@ -39,7 +39,7 @@ RSpec.describe MazeWallsController, :type => :controller do
   describe "GET #index" do
     it "assigns maze_walls from specific maze as @maze_walls" do
       maze = Maze.create! valid_maze_attributes
-      maze_wall = maze.maze_walls.create! valid_wall_attributes
+      maze_wall = maze.maze_walls.create!(valid_wall_attributes)
       get :index, { :maze_id => maze.id }, valid_session
       expect(assigns(:maze_walls)).to eq([maze_wall])
     end
