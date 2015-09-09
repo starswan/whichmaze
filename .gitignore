@@ -16,3 +16,4 @@
 !/log/.keep
 /tmp
 bin
+.idea/workspace.xml
