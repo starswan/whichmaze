@@ -8,7 +8,7 @@ RSpec.describe Maze, :type => :model do
   describe "creating a new maze" do
     it "should generate a solvable maze starting from 1,1 with a recognized exit" do
       maze = Maze.create! valid_attributes
-      walls = maze.maze_walls
+      walls = maze.walls
       expect(walls.count).to eq(9)
       maze_exit = walls.find { |wall| wall.xposition == 1 and wall.yposition == 1 }
       expect(maze_exit.xposition).to eq(1)

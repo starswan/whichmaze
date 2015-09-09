@@ -13,12 +13,12 @@
   </thead>
 
   <tbody>
-    <% @maze_walls.each do |maze_wall| %>
+    <% @walls.each do |wall| %>
       <tr>
-        <td><%= maze_wall.xposition %></td>
-        <td><%= maze_wall.yposition %></td>
-        <td><%= maze_wall.right %></td>
-        <td><%= maze_wall.down %></td>
+        <td><%= wall.xposition %></td>
+        <td><%= wall.yposition %></td>
+        <td><%= wall.right %></td>
+        <td><%= wall.down %></td>
       </tr>
     <% end %>
   </tbody>

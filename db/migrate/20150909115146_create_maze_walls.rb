@@ -1,6 +1,6 @@
 class CreateMazeWalls < ActiveRecord::Migration
   def change
-    create_table :maze_walls do |t|
+    create_table :walls do |t|
       t.integer :maze_id
       t.integer :xposition
       t.integer :yposition

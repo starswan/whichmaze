@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MazeWallsController, :type => :controller do
+RSpec.describe WallsController, :type => :controller do
 
   let(:valid_maze_attributes) {
     { :width => 1, :height => 1 }
@@ -15,15 +15,15 @@ RSpec.describe MazeWallsController, :type => :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns generated maze_walls from specific maze as @maze_walls" do
+    it "assigns generated maze_walls from specific maze as @walls" do
       maze = Maze.create! valid_maze_attributes
-      maze_wall = maze.maze_walls.new(valid_wall_attributes)
+      wall = maze.walls.new(valid_wall_attributes)
       get :index, { :maze_id => maze.id }, valid_session
-      expect(assigns(:maze_walls).size).to eq(1)
-      expect(assigns(:maze_walls)[0].xposition).to eq(maze_wall.xposition)
-      expect(assigns(:maze_walls)[0].yposition).to eq(maze_wall.yposition)
-      expect(assigns(:maze_walls)[0].right).to eq(maze_wall.right)
-      expect(assigns(:maze_walls)[0].down).to eq(maze_wall.down)
+      expect(assigns(:walls).size).to eq(1)
+      expect(assigns(:walls)[0].xposition).to eq(wall.xposition)
+      expect(assigns(:walls)[0].yposition).to eq(wall.yposition)
+      expect(assigns(:walls)[0].right).to eq(wall.right)
+      expect(assigns(:walls)[0].down).to eq(wall.down)
     end
   end
 

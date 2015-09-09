@@ -1,10 +1,10 @@
-class MazeWallsController < ApplicationController
+class WallsController < ApplicationController
   before_action :set_maze, :only => [:index]
 
   # GET /maze_walls
   # GET /maze_walls.json
   def index
-    @maze_walls = @maze.maze_walls
+    @walls = @maze.walls
   end
 
 private

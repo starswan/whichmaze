@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe MazeWall, :type => :model do
+RSpec.describe Wall, :type => :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 end

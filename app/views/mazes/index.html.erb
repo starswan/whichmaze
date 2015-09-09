@@ -14,12 +14,12 @@
   <tbody>
     <% @mazes.each do |maze| %>
       <tr>
-        <td><%= link_to maze.id, maze_maze_walls_path(maze) %></td>
+        <td><%= link_to maze.id, maze_walls_path(maze) %></td>
         <td><%= maze.width %></td>
         <td><%= maze.height %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      maze_maze_walls_path(maze), :class => 'btn btn-default btn-xs' %>
+                      maze_walls_path(maze), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_maze_path(maze), :class => 'btn btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
