@@ -5,6 +5,30 @@ RSpec.describe Maze, :type => :model do
     { :width => 3, :height => 3 }
   }
 
+  describe "creating an invalid maze should fail" do
+    it "should not allow zero or negative height values" do
+      maze = Maze.new valid_attributes.merge(:height => 0)
+      expect(maze.save).to be(false)
+      maze2 = Maze.new valid_attributes.merge(:height => -1)
+      expect(maze2.save).to be(false)
+    end
+    it "should not allow height values above 100" do
+      maze = Maze.new valid_attributes.merge(:height => 101)
+      expect(maze.save).to be(false)
+    end
+
+    it "should not allow zero or negative width values" do
+      maze = Maze.new valid_attributes.merge(:width => 0)
+      expect(maze.save).to be(false)
+      maze2 = Maze.new valid_attributes.merge(:width => -1)
+      expect(maze2.save).to be(false)
+    end
+    it "should not allow width values above 100" do
+      maze = Maze.new valid_attributes.merge(:width => 101)
+      expect(maze.save).to be(false)
+    end
+  end
+
   describe "creating a new maze" do
     it "should generate a solvable maze starting from 1,1 with a recognized exit" do
       maze = Maze.create! valid_attributes

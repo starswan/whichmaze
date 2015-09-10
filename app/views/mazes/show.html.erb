@@ -12,8 +12,6 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               mazes_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_maze_path(@maze), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               maze_path(@maze),
               :method => 'delete',

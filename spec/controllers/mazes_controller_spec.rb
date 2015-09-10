@@ -59,14 +59,6 @@ RSpec.describe MazesController, :type => :controller do
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested maze as @maze" do
-      maze = Maze.create! valid_attributes
-      get :edit, {:id => maze.to_param}, valid_session
-      expect(assigns(:maze)).to eq(maze)
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Maze" do
@@ -96,47 +88,6 @@ RSpec.describe MazesController, :type => :controller do
       it "re-renders the 'new' template" do
         post :create, {:maze => invalid_attributes}, valid_session
         expect(response).to render_template("new")
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        { :height => 3 }
-      }
-
-      it "updates the requested maze" do
-        maze = Maze.create! valid_attributes
-        put :update, {:id => maze.to_param, :maze => new_attributes}, valid_session
-        maze.reload
-        expect(maze.height).to eq(3)
-      end
-
-      it "assigns the requested maze as @maze" do
-        maze = Maze.create! valid_attributes
-        put :update, {:id => maze.to_param, :maze => valid_attributes}, valid_session
-        expect(assigns(:maze)).to eq(maze)
-      end
-
-      it "redirects to the maze" do
-        maze = Maze.create! valid_attributes
-        put :update, {:id => maze.to_param, :maze => valid_attributes}, valid_session
-        expect(response).to redirect_to(maze)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the maze as @maze" do
-        maze = Maze.create! valid_attributes
-        put :update, {:id => maze.to_param, :maze => invalid_attributes}, valid_session
-        expect(assigns(:maze)).to eq(maze)
-      end
-
-      it "re-renders the 'edit' template" do
-        maze = Maze.create! valid_attributes
-        put :update, {:id => maze.to_param, :maze => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
       end
     end
   end

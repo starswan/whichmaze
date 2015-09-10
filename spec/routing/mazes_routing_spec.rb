@@ -15,20 +15,8 @@ RSpec.describe MazesController, :type => :routing do
       expect(:get => "/mazes/1").to route_to("mazes#show", :id => "1")
     end
 
-    it "routes to #edit" do
-      expect(:get => "/mazes/1/edit").to route_to("mazes#edit", :id => "1")
-    end
-
     it "routes to #create" do
       expect(:post => "/mazes").to route_to("mazes#create")
-    end
-
-    it "routes to #update via PUT" do
-      expect(:put => "/mazes/1").to route_to("mazes#update", :id => "1")
-    end
-
-    it "routes to #update via PATCH" do
-      expect(:patch => "/mazes/1").to route_to("mazes#update", :id => "1")
     end
 
     it "routes to #destroy" do
