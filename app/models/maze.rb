@@ -4,13 +4,14 @@ class Maze < ActiveRecord::Base
 
   has_many :walls, :dependent => :destroy
 
-  WallStruct = Struct.new :down, :right
+  WallData = Struct.new :down, :right
+  Point = Struct.new :x, :y
 
   after_create do |maze|
     mazewalls = {}
     1.upto(maze.height) do |yposition|
       1.upto(maze.width) do |xposition|
-        mazewalls[[xposition, yposition]] = WallStruct.new(true, true)
+        mazewalls[Point.new(xposition, yposition)] = WallData.new(true, true)
       end
     end
     xpos, ypos = 1, 1
@@ -31,26 +32,26 @@ class Maze < ActiveRecord::Base
           # need to remove a right wall (ypos === newy)
           if newx < xpos
             # remove newx
-            mazewalls[[newx, ypos]].right = false
+            mazewalls[Point.new(newx, ypos)].right = false
           else
             # remove xpos
-            mazewalls[[xpos, ypos]].right = false
+            mazewalls[Point.new(xpos, ypos)].right = false
           end
         else
           # need to remove a down wall (xpos === newx)
           if newy < ypos
             # remove newy
-            mazewalls[[xpos, newy]].down = false
+            mazewalls[Point.new(xpos, newy)].down = false
           else
             # remove ypos
-            mazewalls[[xpos, ypos]].down = false
+            mazewalls[Point.new(xpos, ypos)].down = false
           end
         end
         xpos, ypos = newx, newy
         visited_cells << [xpos, ypos]
       end
     end
-    mazewalls.each { |key, data| maze.walls.create! :x => key[0], :y => key[1],
-                                                    :down => data.down, :right => data.right }
+    mazewalls.each { |point, wall| maze.walls.create! :x => point.x, :y => point.y,
+                                                      :down => wall.down, :right => wall.right }
   end
 end
