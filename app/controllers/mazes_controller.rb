@@ -1,5 +1,5 @@
 class MazesController < ApplicationController
-  before_action :set_maze, only: [:show, :edit, :update, :destroy]
+  before_action :set_maze, :only=> [:show, :edit, :update, :destroy]
 
   # GET /mazes
   # GET /mazes.json
@@ -28,11 +28,11 @@ class MazesController < ApplicationController
 
     respond_to do |format|
       if @maze.save
-        format.html { redirect_to @maze, notice: 'Maze was successfully created.' }
-        format.json { render :show, status: :created, location: @maze }
+        format.html { redirect_to @maze, :notice => 'Maze was successfully created.' }
+        format.json { render :show, :status => :created, :location => @maze }
       else
         format.html { render :new }
-        format.json { render json: @maze.errors, status: :unprocessable_entity }
+        format.json { render :json => @maze.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -42,11 +42,11 @@ class MazesController < ApplicationController
   def update
     respond_to do |format|
       if @maze.update(maze_params)
-        format.html { redirect_to @maze, notice: 'Maze was successfully updated.' }
-        format.json { render :show, status: :ok, location: @maze }
+        format.html { redirect_to @maze, :notice => 'Maze was successfully updated.' }
+        format.json { render :show, :status => :ok, :location => @maze }
       else
         format.html { render :edit }
-        format.json { render json: @maze.errors, status: :unprocessable_entity }
+        format.json { render :json => @maze.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,7 +56,7 @@ class MazesController < ApplicationController
   def destroy
     @maze.destroy
     respond_to do |format|
-      format.html { redirect_to mazes_url, notice: 'Maze was successfully destroyed.' }
+      format.html { redirect_to mazes_url, :notice => 'Maze was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
