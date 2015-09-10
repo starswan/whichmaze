@@ -9,6 +9,8 @@ class Maze < ActiveRecord::Base
   WallData = Struct.new :down, :right
   Point = Struct.new :x, :y
 
+  START_POINT = Point.new(1, 1)
+
   def add_walls
     # Make hash with all walls and no paths as a starting point
     mazewalls = {}
@@ -17,10 +19,10 @@ class Maze < ActiveRecord::Base
         mazewalls[Point.new(xposition, yposition)] = WallData.new(true, true)
       end
     end
-    current_point = Point.new 1, 1
+    current_point = START_POINT
     visited_cells = Set.new [current_point]
     current_path = [current_point]
-    exit_point, longest_path_size = current_point, current_path.size
+    exit_point, solution_path = current_point, current_path.size
     while visited_cells.size < mazewalls.size
       potential_neighbours = [Point.new(current_point.x-1, current_point.y),
                               Point.new(current_point.x+1, current_point.y),
@@ -32,8 +34,8 @@ class Maze < ActiveRecord::Base
       end.reject { |p| visited_cells.include? p }
 
       if unvisited_neighbours.size == 0
-        if current_path.size > longest_path_size
-          longest_path_size = current_path.size
+        if current_path.size > solution_path and on_edge(current_point) and current_point != START_POINT
+          solution_path = current_path.size
           exit_point = current_point
         end
         current_point = current_path.pop
@@ -71,4 +73,9 @@ class Maze < ActiveRecord::Base
     logger.debug "Maze now #{self.inspect} #{xexit} #{yexit}"
     true
   end
+
+  private
+    def on_edge point
+      point.x == 1 or point.y == 1 or point.x == self.width or point.y == self.height
+    end
 end

@@ -75,7 +75,7 @@ RSpec.describe MazesController, :type => :controller do
 
       it "redirects to the created maze" do
         post :create, {:maze => valid_attributes}, valid_session
-        expect(response).to redirect_to(Maze.last)
+        expect(response).to redirect_to(maze_walls_path(Maze.last))
       end
     end
 

@@ -1,5 +1,5 @@
 class MazesController < ApplicationController
-  before_action :set_maze, :only=> [:show, :edit, :update, :destroy]
+  before_action :set_maze, :only => [:show, :destroy]
 
   # GET /mazes
   # GET /mazes.json
@@ -17,10 +17,6 @@ class MazesController < ApplicationController
     @maze = Maze.new
   end
 
-  # GET /mazes/1/edit
-  def edit
-  end
-
   # POST /mazes
   # POST /mazes.json
   def create
@@ -28,24 +24,10 @@ class MazesController < ApplicationController
 
     respond_to do |format|
       if @maze.save
-        format.html { redirect_to @maze, :notice => 'Maze was successfully created.' }
+        format.html { redirect_to maze_walls_path(@maze), :notice => 'Maze was successfully created.' }
         format.json { render :show, :status => :created, :location => @maze }
       else
         format.html { render :new }
-        format.json { render :json => @maze.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /mazes/1
-  # PATCH/PUT /mazes/1.json
-  def update
-    respond_to do |format|
-      if @maze.update(maze_params)
-        format.html { redirect_to @maze, :notice => 'Maze was successfully updated.' }
-        format.json { render :show, :status => :ok, :location => @maze }
-      else
-        format.html { render :edit }
         format.json { render :json => @maze.errors, :status => :unprocessable_entity }
       end
     end
