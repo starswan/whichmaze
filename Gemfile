@@ -35,6 +35,10 @@ gem 'sdoc', '~> 0.4.0', :group => :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem "rspec-rails"
+
+  gem 'jasmine'
 end
 
 group :development do
@@ -45,8 +49,5 @@ group :development do
   gem 'spring'
 end
 
-gem "rspec-rails", :group => [:development, :test]
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
-# For XML SVG output
-gem 'nokogiri'
