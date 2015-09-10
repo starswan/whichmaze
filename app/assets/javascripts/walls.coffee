@@ -2,14 +2,11 @@
 window.rand = (limit) ->
   Math.floor(Math.random() * limit)
 
-#print_solution = (solution) ->
-#  s = ""
-#  for item in solution
-#    s = s + "X: #{item.x} Y: #{item.y} "
-#  s
+print_solution = (solution) ->
+  "[X: #{item.x} Y: #{item.y}]" for item in solution
 
 json_failed = (json, status) ->
-  alert 'An unknown error occurred'
+  alert "Error retrieving maze data"
 
 hash_key = (x, y) ->
   "#{x},#{y}"
@@ -63,9 +60,7 @@ json_received = (json, status) ->
   xexit = button.data('xexit')
   yexit = button.data('yexit')
   solution = maze_solver(json, { 'x' : xexit, 'y' : yexit })
-  alert "Got it #{status} #{xexit} #{yexit} Solution length #{solution.length}"
-#  for wall in json
-#    alert "wall #{wall}"
+  alert "Solution #{print_solution(solution)}"
 
 jQuery ->
   button = $('#solve')
