@@ -35,13 +35,15 @@ class Maze < ActiveRecord::Base
       end.reject { |p| visited_cells.include? p }
 
       if unvisited_neighbours.empty?
+        current_point = current_path.pop
+      else
+        current_path << current_point
+
         if current_path.size > solution_path_size and on_edge(current_point) and current_point != START_POINT
           solution_path_size = current_path.size
           exit_point = current_point
         end
-        current_point = current_path.pop
-      else
-        current_path << current_point
+
         newpoint = unvisited_neighbours[rand(unvisited_neighbours.size)]
         # Remove wall between current and chosen
         if newpoint.x != current_point.x
