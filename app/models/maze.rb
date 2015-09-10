@@ -10,10 +10,9 @@ class Maze < ActiveRecord::Base
   Point = Struct.new :x, :y
 
   def add_walls
-    maze = self
     mazewalls = {}
-    1.upto(maze.height) do |yposition|
-      1.upto(maze.width) do |xposition|
+    1.upto(self.height) do |yposition|
+      1.upto(self.width) do |xposition|
         mazewalls[Point.new(xposition, yposition)] = WallData.new(true, true)
       end
     end
@@ -28,7 +27,7 @@ class Maze < ActiveRecord::Base
                               Point.new(point.x, point.y+1)]
 
       unvisited_neighbours = potential_neighbours.reject do |p|
-        p.x < 1 or p.y < 1 or p.x > maze.width or p.y > maze.height
+        p.x < 1 or p.y < 1 or p.x > self.width or p.y > self.height
       end.reject { |p| visited_cells.include? p }
 
       if unvisited_neighbours.size == 0
@@ -64,11 +63,11 @@ class Maze < ActiveRecord::Base
         visited_cells << point
       end
     end
-    mazewalls.each { |point, wall| maze.walls.build :x => point.x, :y => point.y,
+    mazewalls.each { |point, wall| self.walls.build :x => point.x, :y => point.y,
                                                     :down => wall.down, :right => wall.right }
-    maze.xexit = xexit
-    maze.yexit = yexit
-    logger.debug "Maze now #{maze.inspect} #{xexit} #{yexit}"
+    self.xexit = xexit
+    self.yexit = yexit
+    logger.debug "Maze now #{self.inspect} #{xexit} #{yexit}"
     true
   end
 end
