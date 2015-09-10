@@ -8,6 +8,8 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:width) %></th>
       <th><%= model_class.human_attribute_name(:height) %></th>
+      <th><%= model_class.human_attribute_name(:xexit) %></th>
+      <th><%= model_class.human_attribute_name(:yexit) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,6 +19,8 @@
         <td><%= link_to maze.id, maze_walls_path(maze) %></td>
         <td><%= maze.width %></td>
         <td><%= maze.height %></td>
+        <td><%= maze.xexit %></td>
+        <td><%= maze.yexit %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       maze_walls_path(maze), :class => 'btn btn-default btn-xs' %>

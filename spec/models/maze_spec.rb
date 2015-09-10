@@ -44,6 +44,9 @@ RSpec.describe Maze, :type => :model do
       expect(maze.xexit).to be > 0
       expect(maze.yexit).to be > 0
 
+      # max_exit = max(maze.xexit, maze.yexit)
+      # expect(max_exit).to eq(valid_attributes[:height] - 1)
+
       maze_hash = walls.inject({}) do |hash, wall|
         hash[[wall.x, wall.y]] = {:down => wall.down, :right => wall.right}
         hash
