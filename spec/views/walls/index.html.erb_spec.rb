@@ -6,17 +6,15 @@ RSpec.describe "walls/index", :type => :view do
     maze = Maze.first
     assign(:walls, [
       maze.walls.create!(
-        # :maze_id => 1,
         :right => false,
-        :xposition => 1,
-        :yposition => 2,
+        :x => 1,
+        :y => 2,
         :down => false
       ),
       maze.walls.create!(
-        # :maze_id => 1,
         :right => false,
-        :xposition => 2,
-        :yposition => 3,
+        :x => 2,
+        :y => 3,
         :down => false
       )
     ])

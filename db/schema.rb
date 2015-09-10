@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20150909115146) do
 
   create_table "walls", force: :cascade do |t|
     t.integer  "maze_id"
-    t.integer  "xposition"
-    t.integer  "yposition"
+    t.integer  "x"
+    t.integer  "y"
     t.boolean  "right"
     t.boolean  "down"
     t.datetime "created_at", null: false

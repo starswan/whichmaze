@@ -50,7 +50,7 @@ class Maze < ActiveRecord::Base
         visited_cells << [xpos, ypos]
       end
     end
-    mazewalls.each { |key, data| maze.walls.create! :xposition => key[0], :yposition => key[1],
+    mazewalls.each { |key, data| maze.walls.create! :x => key[0], :y => key[1],
                                                     :down => data.down, :right => data.right }
   end
 end

@@ -10,16 +10,16 @@ RSpec.describe Maze, :type => :model do
       maze = Maze.create! valid_attributes
       walls = maze.walls
       expect(walls.count).to eq(9)
-      maze_exit = walls.find { |wall| wall.xposition == 1 and wall.yposition == 1 }
-      expect(maze_exit.xposition).to eq(1)
-      expect(maze_exit.yposition).to eq(1)
+      maze_start = walls.find { |wall| wall.x == 1 and wall.y == 1 }
+      expect(maze_start.x).to eq(1)
+      expect(maze_start.y).to eq(1)
 
       expect(walls.select { |w| not w.down or not w.right }.size).to be > 0
       # expect(walls.select { |w| not w.down or not w.right }.size).to eq(5)
       # expect(walls).to eq([])
 
       maze_hash = walls.inject({}) do |hash, wall|
-        hash[[wall.xposition, wall.yposition]] = {:down => wall.down, :right => wall.right}
+        hash[[wall.x, wall.y]] = {:down => wall.down, :right => wall.right}
         hash
       end
 

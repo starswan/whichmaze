@@ -8,15 +8,15 @@ style = 'stroke:rgb(0,0,0);stroke-width:1'
 xml.svg(:xmlns => "http://www.w3.org/2000/svg", :height => @maze.height * scale, :width => @maze.width * scale) {
   xml.line(:x1 => 0, :y1 => 0, :x2 => 0, :y2 => @maze.height * scale, :style=> style)
   xml.line(:x1 => 0, :y1 => 0, :x2 => @maze.width * scale, :y2 => 0, :style=> style)
-  @walls.each { |w|
+  @walls.each { |wall|
     # Down line
-    xml.line(:x1 => (w.xposition - 1) * scale, :y1 => w.yposition * scale,
-             :x2 => w.xposition * scale, :y2 => w.yposition * scale,
-             :style=> style) if w.down
+    xml.line(:x1 => (wall.x - 1) * scale, :y1 => wall.y * scale,
+             :x2 => wall.x * scale, :y2 => wall.y * scale,
+             :style=> style) if wall.down
     # Right line
-    xml.line(:x1 => w.xposition * scale, :y1 => (w.yposition - 1) * scale,
-             :x2 => w.xposition * scale, :y2 => w.yposition * scale,
-             :style=> style) if w.right
+    xml.line(:x1 => wall.x * scale, :y1 => (wall.y - 1) * scale,
+             :x2 => wall.x * scale, :y2 => wall.y * scale,
+             :style=> style) if wall.right
   }
 }
 

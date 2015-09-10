@@ -2,8 +2,8 @@ class CreateMazeWalls < ActiveRecord::Migration
   def change
     create_table :walls do |t|
       t.integer :maze_id
-      t.integer :xposition
-      t.integer :yposition
+      t.integer :x
+      t.integer :y
       t.boolean :right
       t.boolean :down
 
