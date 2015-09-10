@@ -5,18 +5,20 @@ RSpec.describe "mazes/index", :type => :view do
     assign(:mazes, [
       Maze.create!(
         :width => 2,
-        :height => 2
+        :height => 3
       ),
       Maze.create!(
-        :width => 3,
-        :height => 2
+        :width => 4,
+        :height => 5
       )
     ])
   end
 
   it "renders a list of mazes" do
     render
-    assert_select "tr>td", :text => 1.to_s, :count => 5
-    assert_select "tr>td", :text => 2.to_s, :count => 4
+    assert_select "tr>td", :text => 2.to_s, :minimum => 1
+    assert_select "tr>td", :text => 3.to_s, :minimum => 1
+    assert_select "tr>td", :text => 4.to_s, :minimum => 1
+    assert_select "tr>td", :text => 5.to_s, :minimum => 1
   end
 end
