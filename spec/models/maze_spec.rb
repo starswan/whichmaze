@@ -27,13 +27,14 @@ RSpec.describe Maze, :type => :model do
       # Try to solve maze, backtracking if the path is a dead end
       solution = [] << [xpos, ypos]
       visited_set = Set.new [[xpos, ypos]]
+      neighbours = [[-1, 0, :right, -1, 0], [1, 0, :right, 0, 0], [0, -1, :down, 0, -1], [0, 1, :down, 0, 0]]
       while visited_set.size < walls.size and solution.size > 0
         # Need to find an accessible non-visited cell
-        neighbours = [[-1, 0, :right, -1, 0], [1, 0, :right, 0, 0], [0, -1, :down, 0, -1], [0, 1, :down, 0, 0]]
         # Rely on maze_hash only having valid positions e.g. with co-ordinates 1 and above
         non_visited_neighbours = neighbours.reject do |x, y|
           visited_set.include? [xpos + x,ypos + y]
         end.select { |x, y, dir, xo, yo| mh = maze_hash[[xpos + xo, ypos + yo]]; mh and not mh[dir]}
+
         if non_visited_neighbours.size == 0
           # Back track
           xpos, ypos = solution.pop
