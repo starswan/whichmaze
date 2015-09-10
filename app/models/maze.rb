@@ -22,8 +22,9 @@ class Maze < ActiveRecord::Base
     current_point = START_POINT
     visited_cells = Set.new [current_point]
     current_path = [current_point]
-    exit_point, solution_path = current_point, current_path.size
+    exit_point, solution_path_size = current_point, current_path.size
     while visited_cells.size < mazewalls.size
+      # Neighbours are on all compass points NSEW - only horizontal moves
       potential_neighbours = [Point.new(current_point.x-1, current_point.y),
                               Point.new(current_point.x+1, current_point.y),
                               Point.new(current_point.x, current_point.y-1),
@@ -33,9 +34,9 @@ class Maze < ActiveRecord::Base
         p.x < 1 or p.y < 1 or p.x > self.width or p.y > self.height
       end.reject { |p| visited_cells.include? p }
 
-      if unvisited_neighbours.size == 0
-        if current_path.size > solution_path and on_edge(current_point) and current_point != START_POINT
-          solution_path = current_path.size
+      if unvisited_neighbours.empty?
+        if current_path.size > solution_path_size and on_edge(current_point) and current_point != START_POINT
+          solution_path_size = current_path.size
           exit_point = current_point
         end
         current_point = current_path.pop
@@ -70,7 +71,7 @@ class Maze < ActiveRecord::Base
                                                     :down => wall.down, :right => wall.right }
     self.xexit = exit_point.x
     self.yexit = exit_point.y
-    logger.debug "Maze now #{self.inspect} #{xexit} #{yexit}"
+    logger.debug "Maze now #{self.inspect}"
     true
   end
 
