@@ -14,9 +14,8 @@ RSpec.describe Maze, :type => :model do
       expect(maze_start.x).to eq(1)
       expect(maze_start.y).to eq(1)
 
+      # Must have some paths rather than all walls
       expect(walls.select { |w| not w.down or not w.right }.size).to be > 0
-      # expect(walls.select { |w| not w.down or not w.right }.size).to eq(5)
-      # expect(walls).to eq([])
 
       maze_hash = walls.inject({}) do |hash, wall|
         hash[[wall.x, wall.y]] = {:down => wall.down, :right => wall.right}
