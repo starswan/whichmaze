@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<b>Walls for maze id <%= @maze.id %> Height: <%= @maze.height %> Width: <%= @maze.width %></b>
+<b>Walls for maze id <%= @maze.id %> Width: <%= @maze.width %> Height: <%= @maze.height %>
+    Exit at <%= @maze.xexit%>,<%= @maze.yexit %></b>
 <p>
     <img src="<%= maze_walls_path(@maze, :format => :svg) %>"/>
 </p>

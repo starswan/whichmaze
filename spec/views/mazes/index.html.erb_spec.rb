@@ -16,7 +16,7 @@ RSpec.describe "mazes/index", :type => :view do
 
   it "renders a list of mazes" do
     render
-    assert_select "tr>td", :text => 1.to_s, :count => 3
+    assert_select "tr>td", :text => 1.to_s, :count => 7
     assert_select "tr>td", :text => 2.to_s, :count => 3
   end
 end

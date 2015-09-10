@@ -1,8 +1,10 @@
 require 'rails_helper'
 
+MAZE_SIZE = 4
+
 RSpec.describe Maze, :type => :model do
   let(:valid_attributes) {
-    { :width => 3, :height => 3 }
+    { :width => MAZE_SIZE, :height => MAZE_SIZE }
   }
 
   describe "creating an invalid maze should fail" do
@@ -33,7 +35,7 @@ RSpec.describe Maze, :type => :model do
     it "should generate a solvable maze starting from 1,1 with a recognized exit" do
       maze = Maze.create! valid_attributes
       walls = maze.walls
-      expect(walls.count).to eq(9)
+      expect(walls.count).to eq(MAZE_SIZE * MAZE_SIZE)
       maze_start = walls.find { |wall| wall.x == 1 and wall.y == 1 }
       expect(maze_start.x).to eq(1)
       expect(maze_start.y).to eq(1)
@@ -41,11 +43,25 @@ RSpec.describe Maze, :type => :model do
       # Must have some paths rather than all walls
       expect(walls.select { |w| not w.down or not w.right }.size).to be > 0
 
-      # expect(maze.xexit).to be > 0
-      # expect(maze.yexit).to be > 0
+      # xexit, yexit should always be a point on the edge of the maze which isn't 1,1
+      # so valid for the 4x4 is anything apart from the 4 middle cells and 1,1 at top left
+      # So the max is either 4 or the min is 1.
+      expect(maze.xexit + maze.yexit).to be > 2
 
+      # Make first, second a pair where first <= second
+      first,second = maze.xexit, maze.yexit
+      first,second = second, first if first > second
+      # If the largest is not on the edge then the smallest must be
+      if second != MAZE_SIZE
+        expect(first).to eq(1)
+      end
+      # If first is non on the edge then the second must be the edge
+      if first != 1
+        expect(second).to eq(MAZE_SIZE)
+      end
       max_exit = [maze.xexit, maze.yexit].max
-      expect(max_exit).to eq(valid_attributes[:height])
+      min_exit = [maze.xexit, maze.yexit].min
+      # # expect(max_exit).to eq(valid_attributes[:height])
 
       maze_hash = walls.inject({}) do |hash, wall|
         hash[[wall.x, wall.y]] = {:down => wall.down, :right => wall.right}

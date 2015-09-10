@@ -10,63 +10,64 @@ class Maze < ActiveRecord::Base
   Point = Struct.new :x, :y
 
   def add_walls
+    # Make hash with all walls and no paths as a starting point
     mazewalls = {}
     1.upto(self.height) do |yposition|
       1.upto(self.width) do |xposition|
         mazewalls[Point.new(xposition, yposition)] = WallData.new(true, true)
       end
     end
-    point = Point.new 1, 1
-    visited_cells = Set.new [point]
-    cellstack = []
-    xexit, yexit, pathsize = 0, 0, 0
+    current_point = Point.new 1, 1
+    visited_cells = Set.new [current_point]
+    current_path = [current_point]
+    exit_point, longest_path_size = current_point, current_path.size
     while visited_cells.size < mazewalls.size
-      potential_neighbours = [Point.new(point.x-1, point.y),
-                              Point.new(point.x+1, point.y),
-                              Point.new(point.x, point.y-1),
-                              Point.new(point.x, point.y+1)]
+      potential_neighbours = [Point.new(current_point.x-1, current_point.y),
+                              Point.new(current_point.x+1, current_point.y),
+                              Point.new(current_point.x, current_point.y-1),
+                              Point.new(current_point.x, current_point.y+1)]
 
       unvisited_neighbours = potential_neighbours.reject do |p|
         p.x < 1 or p.y < 1 or p.x > self.width or p.y > self.height
       end.reject { |p| visited_cells.include? p }
 
       if unvisited_neighbours.size == 0
-        if cellstack.size > pathsize
-          pathsize = cellstack.size
-          xexit, yexit = point.x, point.y
+        if current_path.size > longest_path_size
+          longest_path_size = current_path.size
+          exit_point = current_point
         end
-        point = cellstack.pop
+        current_point = current_path.pop
       else
-        cellstack << point
+        current_path << current_point
         newpoint = unvisited_neighbours[rand(unvisited_neighbours.size)]
         # Remove wall between current and chosen
-        if newpoint.x != point.x
+        if newpoint.x != current_point.x
           # need to remove a right wall (ypos === newy)
-          if newpoint.x < point.x
+          if newpoint.x < current_point.x
             # remove newx
-            mazewalls[Point.new(newpoint.x, point.y)].right = false
+            mazewalls[Point.new(newpoint.x, current_point.y)].right = false
           else
             # remove xpos
-            mazewalls[Point.new(point.x, point.y)].right = false
+            mazewalls[Point.new(current_point.x, current_point.y)].right = false
           end
         else
           # need to remove a down wall (xpos === newx)
-          if newpoint.y < point.y
+          if newpoint.y < current_point.y
             # remove newy
-            mazewalls[Point.new(point.x, newpoint.y)].down = false
+            mazewalls[Point.new(current_point.x, newpoint.y)].down = false
           else
             # remove ypos
-            mazewalls[Point.new(point.x, point.y)].down = false
+            mazewalls[Point.new(current_point.x, current_point.y)].down = false
           end
         end
-        point = newpoint
-        visited_cells << point
+        current_point = newpoint
+        visited_cells << current_point
       end
     end
-    mazewalls.each { |point, wall| self.walls.build :x => point.x, :y => point.y,
+    mazewalls.each { |current_point, wall| self.walls.build :x => current_point.x, :y => current_point.y,
                                                     :down => wall.down, :right => wall.right }
-    self.xexit = xexit
-    self.yexit = yexit
+    self.xexit = exit_point.x
+    self.yexit = exit_point.y
     logger.debug "Maze now #{self.inspect} #{xexit} #{yexit}"
     true
   end
