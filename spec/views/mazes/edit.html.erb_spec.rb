@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "mazes/edit", type: :view do
+RSpec.describe "mazes/edit", :type => :view do
   before(:each) do
     @maze = assign(:maze, Maze.create!(
-      :width => 1,
-      :height => 1
+      :width => 2,
+      :height => 2
     ))
   end
 

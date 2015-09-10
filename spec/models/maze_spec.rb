@@ -8,25 +8,21 @@ RSpec.describe Maze, :type => :model do
   }
 
   describe "creating an invalid maze should fail" do
-    it "should not allow zero or negative height values" do
-      maze = Maze.new valid_attributes.merge(:height => 0)
-      expect(maze.save).to be(false)
-      maze2 = Maze.new valid_attributes.merge(:height => -1)
-      expect(maze2.save).to be(false)
-    end
     it "should not allow height values above 100" do
       maze = Maze.new valid_attributes.merge(:height => 101)
       expect(maze.save).to be(false)
     end
-
-    it "should not allow zero or negative width values" do
-      maze = Maze.new valid_attributes.merge(:width => 0)
+    it "should not allow height values below 2" do
+      maze = Maze.new valid_attributes.merge(:height => 1)
       expect(maze.save).to be(false)
-      maze2 = Maze.new valid_attributes.merge(:width => -1)
-      expect(maze2.save).to be(false)
     end
+
     it "should not allow width values above 100" do
       maze = Maze.new valid_attributes.merge(:width => 101)
+      expect(maze.save).to be(false)
+    end
+    it "should not allow width values below 2" do
+      maze = Maze.new valid_attributes.merge(:width => 1)
       expect(maze.save).to be(false)
     end
   end

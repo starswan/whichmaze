@@ -1,6 +1,6 @@
 class Maze < ActiveRecord::Base
-  validates :height, :numericality => { :greater_than => 0, :less_than_or_equal_to => 100 }
-  validates :width, :numericality => { :greater_than => 0, :less_than_or_equal_to => 100 }
+  validates :height, :numericality => { :greater_than => 1, :less_than_or_equal_to => 100 }
+  validates :width, :numericality => { :greater_than => 1, :less_than_or_equal_to => 100 }
 
   has_many :walls, :dependent => :destroy
 
