@@ -41,6 +41,9 @@ RSpec.describe Maze, :type => :model do
       # Must have some paths rather than all walls
       expect(walls.select { |w| not w.down or not w.right }.size).to be > 0
 
+      expect(maze.xexit).to be > 0
+      expect(maze.yexit).to be > 0
+
       maze_hash = walls.inject({}) do |hash, wall|
         hash[[wall.x, wall.y]] = {:down => wall.down, :right => wall.right}
         hash

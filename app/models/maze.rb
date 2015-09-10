@@ -4,10 +4,13 @@ class Maze < ActiveRecord::Base
 
   has_many :walls, :dependent => :destroy
 
+  before_create :add_walls
+
   WallData = Struct.new :down, :right
   Point = Struct.new :x, :y
 
-  after_create do |maze|
+  def add_walls
+    maze = self
     mazewalls = {}
     1.upto(maze.height) do |yposition|
       1.upto(maze.width) do |xposition|
@@ -17,12 +20,17 @@ class Maze < ActiveRecord::Base
     xpos, ypos = 1, 1
     visited_cells = Set.new [[xpos, ypos]]
     cellstack = []
+    xexit, yexit, pathsize = nil, nil, 0
     while visited_cells.size < mazewalls.size
       neighbours = [[xpos-1, ypos], [xpos+1, ypos], [xpos, ypos-1], [xpos, ypos+1]].reject do |x, y|
         x < 1 or y < 1 or x > maze.width or y > maze.height
       end
       unvisited_neighbours = neighbours.reject { |x, y| visited_cells.include? [x, y] }
       if unvisited_neighbours.size == 0
+        if cellstack.size > pathsize
+          pathsize = cellstack.size
+          xexit, yexit = xpos, ypos
+        end
         xpos, ypos = cellstack.pop
       else
         cellstack << [xpos, ypos]
@@ -51,7 +59,11 @@ class Maze < ActiveRecord::Base
         visited_cells << [xpos, ypos]
       end
     end
-    mazewalls.each { |point, wall| maze.walls.create! :x => point.x, :y => point.y,
-                                                      :down => wall.down, :right => wall.right }
+    mazewalls.each { |point, wall| maze.walls.build :x => point.x, :y => point.y,
+                                                    :down => wall.down, :right => wall.right }
+    maze.xexit = xexit
+    maze.yexit = yexit
+    logger.debug "Maze now #{maze.inspect}"
+    true
   end
 end

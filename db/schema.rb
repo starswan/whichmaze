@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20150909115146) do
   create_table "mazes", force: :cascade do |t|
     t.integer  "width"
     t.integer  "height"
+    t.integer  "xexit"
+    t.integer  "yexit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
