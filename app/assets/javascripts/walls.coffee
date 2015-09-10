@@ -1,15 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 # Emulate the ruby rand() method which returns an integer between 0 and limit - 1
 window.rand = (limit) ->
   Math.floor(Math.random() * limit)
 
-print_solution = (solution) ->
-  s = ""
-  for item in solution
-    s = s + "X: #{item.x} Y: #{item.y} "
-  s
+#print_solution = (solution) ->
+#  s = ""
+#  for item in solution
+#    s = s + "X: #{item.x} Y: #{item.y} "
+#  s
+
+json_failed = (json, status) ->
+  alert 'An unknown error occurred'
 
 hash_key = (x, y) ->
   "#{x},#{y}"
@@ -57,3 +57,20 @@ window.maze_solver = (walls, endpoint) ->
 #      alert "Visiting #{point.x} #{point.y} solution now #{print_solution(solution)}"
 #  alert print_solution(solution)
   solution
+
+json_received = (json, status) ->
+  button = $('#solve')
+  xexit = button.data('xexit')
+  yexit = button.data('yexit')
+  solution = maze_solver(json, { 'x' : xexit, 'y' : yexit })
+  alert "Got it #{status} #{xexit} #{yexit} Solution length #{solution.length}"
+#  for wall in json
+#    alert "wall #{wall}"
+
+jQuery ->
+  button = $('#solve')
+  params = { type: 'GET', dataType: 'json', error: json_failed, success: json_received  }
+  button.click ->
+#    alert 'solve it you silly thing'
+    $.ajax('/mazes/' + button.data('maze') + '/walls.json', params)
+

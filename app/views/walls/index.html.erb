@@ -2,9 +2,11 @@
 
 <b>Walls for maze id <%= @maze.id %> Width: <%= @maze.width %> Height: <%= @maze.height %>
     Exit at <%= @maze.xexit%>,<%= @maze.yexit %></b>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+            mazes_path, :class => 'btn btn-default' %>
+<a class="btn btn-default" id="solve" target="#"
+   data-maze="<%= @maze.id %>" data-xexit="<%= @maze.xexit %>" data-yexit="<%= @maze.yexit %>">Solve</a>
 <p>
     <img src="<%= maze_walls_path(@maze, :format => :svg) %>"/>
 </p>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-            mazes_path, :class => 'btn btn-default' %>
