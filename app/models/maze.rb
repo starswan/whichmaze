@@ -11,6 +11,8 @@ class Maze < ActiveRecord::Base
 
   START_POINT = Point.new(1, 1)
 
+  # Generate walls for maze using backtracking algorithm
+  # https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker
   def add_walls
     # Make hash with all walls and no paths as a starting point
     mazewalls = {}

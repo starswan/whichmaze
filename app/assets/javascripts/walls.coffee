@@ -14,12 +14,13 @@ hash_key = (x, y) ->
 point_hash_key = (point) ->
   hash_key(point.x, point.y)
 
+# Solve maze using backtracking algorithm (non-recursive implementation)
+#https://en.wikipedia.org/wiki/Maze_solving_algorithm#Recursive_algorithm
 window.maze_solver = (walls, endpoint) ->
   maze_hash = {}
   for wall in walls
     maze_hash[hash_key(wall.x, wall.y)] = { down: wall.down, right: wall.right }
 
-  # Try to solve maze, backtracking if the path is a dead end
   solution = []
   point = { x: 1, y: 1 }
   solution.push point
@@ -46,13 +47,10 @@ window.maze_solver = (walls, endpoint) ->
     if non_visited_neighbours.length == 0
       # Back track
       point = solution.pop()
-#      alert "Back tracking to #{point.x} #{point.y}"
     else
       point = non_visited_neighbours[rand(non_visited_neighbours.length)]
       visited_set[point_hash_key(point)] = true
       solution.push point
-#      alert "Visiting #{point.x} #{point.y} solution now #{print_solution(solution)}"
-#  alert print_solution(solution)
   solution
 
 json_received = (json, status) ->
