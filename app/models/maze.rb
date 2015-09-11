@@ -1,3 +1,7 @@
+#
+# Maze creates walls when it is saved to the db.
+# walls are numbered from 1 to width (x) and 1 to height (y)
+# The entrance cell is always assumed to be cell 1,1
 class Maze < ActiveRecord::Base
   validates :height, :numericality => { :greater_than => 1, :less_than_or_equal_to => 100 }
   validates :width, :numericality => { :greater_than => 1, :less_than_or_equal_to => 100 }
@@ -14,7 +18,7 @@ class Maze < ActiveRecord::Base
   # Generate walls for maze using backtracking algorithm
   # https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker
   def add_walls
-    # Make hash with all walls and no paths as a starting point
+    # Make a hash with all walls and no paths as a starting point
     mazewalls = {}
     1.upto(self.height) do |yposition|
       1.upto(self.width) do |xposition|
@@ -26,7 +30,7 @@ class Maze < ActiveRecord::Base
     current_path = [current_point]
     exit_point, solution_path_size = current_point, current_path.size
     while visited_cells.size < mazewalls.size
-      # Neighbours are on all compass points NSEW - only horizontal moves
+      # Neighbours are on all compass points NSEW - only horizontal moves allowed
       potential_neighbours = [Point.new(current_point.x-1, current_point.y),
                               Point.new(current_point.x+1, current_point.y),
                               Point.new(current_point.x, current_point.y-1),
@@ -37,7 +41,7 @@ class Maze < ActiveRecord::Base
       end.reject { |p| visited_cells.include? p }
 
       if unvisited_neighbours.empty?
-        current_point = current_path.pop
+        current_point = current_path.pop # Backtrack if we can't make progress
       else
         current_path << current_point
 
@@ -49,7 +53,7 @@ class Maze < ActiveRecord::Base
         newpoint = unvisited_neighbours[rand(unvisited_neighbours.size)]
         # Remove wall between current and chosen
         if newpoint.x != current_point.x
-          # need to remove a right wall (ypos === newy)
+          # need to remove a right wall (y position === new y position)
           if newpoint.x < current_point.x
             # remove newx
             mazewalls[Point.new(newpoint.x, current_point.y)].right = false
@@ -58,7 +62,7 @@ class Maze < ActiveRecord::Base
             mazewalls[Point.new(current_point.x, current_point.y)].right = false
           end
         else
-          # need to remove a down wall (xpos === newx)
+          # need to remove a down wall (x position === new x position)
           if newpoint.y < current_point.y
             # remove newy
             mazewalls[Point.new(current_point.x, newpoint.y)].down = false
@@ -71,16 +75,15 @@ class Maze < ActiveRecord::Base
         visited_cells << current_point
       end
     end
-    mazewalls.each { |current_point, wall| self.walls.build :x => current_point.x, :y => current_point.y,
+    mazewalls.each { |point, wall| self.walls.build :x => point.x, :y => point.y,
                                                     :down => wall.down, :right => wall.right }
     self.xexit = exit_point.x
     self.yexit = exit_point.y
-    logger.debug "Maze now #{self.inspect}"
-    true
+    true # Make sure that this method doesn't prevent creation of maze
   end
 
-  private
-    def on_edge point
-      point.x == 1 or point.y == 1 or point.x == self.width or point.y == self.height
-    end
+private
+  def on_edge point
+    point.x == 1 or point.y == 1 or point.x == self.width or point.y == self.height
+  end
 end

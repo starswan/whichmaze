@@ -8,6 +8,7 @@ print_solution = (solution) ->
 json_failed = (json, status) ->
   alert "Error retrieving maze data"
 
+# Hash keys for visited set and maze representation
 hash_key = (x, y) ->
   "#{x},#{y}"
 
