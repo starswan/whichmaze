@@ -5,6 +5,7 @@
 # }
 scale = 10
 style = 'stroke:rgb(0,0,0);stroke-width:1'
+logger.debug "walls #{@walls.inspect}"
 xml.svg(:xmlns => "http://www.w3.org/2000/svg", :height => @maze.height * scale, :width => @maze.width * scale) {
   xml.line(:x1 => 0, :y1 => 0, :x2 => 0, :y2 => @maze.height * scale, :style=> style)
   xml.line(:x1 => 0, :y1 => 0, :x2 => @maze.width * scale, :y2 => 0, :style=> style)

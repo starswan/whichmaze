@@ -9,4 +9,5 @@ RSpec.describe "walls/index", type: :view do
     render
     assert_select 'img[src]', :count => 1
   end
+
 end
