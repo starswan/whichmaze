@@ -1,27 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "walls/index", :type => :view do
+RSpec.describe "walls/index", type: :view do
   before(:each) do
-    assign(:maze, Maze.create!(:height => 3, :width => 2))
-    maze = Maze.first
-    assign(:walls, [
-      maze.walls.create!(
-        :right => false,
-        :x => 1,
-        :y => 2,
-        :down => false
-      ),
-      maze.walls.create!(
-        :right => false,
-        :x => 2,
-        :y => 3,
-        :down => false
-      )
-    ])
+    assign(:maze, Maze.create!(height: 3, width: 2))
   end
 
-  it 'renders a list of walls' do
+  it 'renders a page with an image of the walls' do
     render
-    assert_select 'img', :count => 1
+    assert_select 'img[src]', :count => 1
   end
 end
