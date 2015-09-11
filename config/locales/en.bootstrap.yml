@@ -12,7 +12,6 @@ en:
     links:
       back: "Back"
       cancel: "Cancel"
-      confirm: "Are you sure?"
       destroy: "Delete"
       new: "New"
       edit: "Edit"

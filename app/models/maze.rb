@@ -3,10 +3,10 @@
 # walls are numbered from 1 to width (x) and 1 to height (y)
 # The entrance cell is always assumed to be cell 1,1
 class Maze < ActiveRecord::Base
-  validates :height, :numericality => { :greater_than => 1, :less_than_or_equal_to => 100 }
-  validates :width, :numericality => { :greater_than => 1, :less_than_or_equal_to => 100 }
+  validates :height, :numericality => { greater_than: 1, less_than_or_equal_to: 100 }
+  validates :width, :numericality => { greater_than: 1, less_than_or_equal_to: 100 }
 
-  has_many :walls, :dependent => :destroy
+  has_many :walls, dependent: :destroy
 
   before_create :add_walls
 
@@ -75,8 +75,10 @@ class Maze < ActiveRecord::Base
         visited_cells << current_point
       end
     end
-    mazewalls.each { |point, wall| self.walls.build :x => point.x, :y => point.y,
-                                                    :down => wall.down, :right => wall.right }
+    mazewalls.each { |point, wall| self.walls.build x: point.x,
+                                                    y: point.y,
+                                                 down: wall.down,
+                                                right: wall.right }
     self.xexit = exit_point.x
     self.yexit = exit_point.y
     true # Make sure that this method doesn't prevent creation of maze

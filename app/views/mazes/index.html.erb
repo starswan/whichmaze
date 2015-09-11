@@ -22,13 +22,15 @@
         <td><%= maze.xexit %></td>
         <td><%= maze.yexit %></td>
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      maze_walls_path(maze), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to t('.show', default: t("helpers.links.show")),
+                      maze_walls_path(maze), class: 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', default: t("helpers.links.destroy")),
                       maze_path(maze),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      method: :delete,
+                      data: { confirm: t('.confirm',
+                                         default: t("helpers.links.confirm",
+                                                    default: "Are you sure you wish to delete maze #{maze.id}?"))},
+                      class: 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
