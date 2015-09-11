@@ -39,6 +39,8 @@ group :development, :test do
   gem "rspec-rails"
 
   gem 'jasmine'
+
+  gem 'simplecov'
 end
 
 group :development do
