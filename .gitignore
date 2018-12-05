@@ -17,5 +17,6 @@
 /tmp
 bin
 .idea/workspace.xml
+.idea/.rakeTasks
 coverage
 .DS_Store
