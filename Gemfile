@@ -53,4 +53,4 @@ group :development do
   gem 'bootstrap-sass-extras'
 end
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3', '>= 3.4.1'
