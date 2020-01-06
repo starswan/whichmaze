@@ -12,14 +12,9 @@ RSpec.describe WallsController, :type => :controller do
     @maze = Maze.create!(valid_maze_attributes)
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # MazeWallsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
-
   describe "GET #index" do
     it "assigns generated maze_walls from specific maze as @walls" do
-      get :index, { :maze_id => @maze.id }, valid_session
+      get :index, params: { :maze_id => @maze.id }
       expect(assigns(:walls).size).to eq(6)
     end
   end

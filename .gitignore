@@ -18,5 +18,6 @@
 bin
 .idea/workspace.xml
 .idea/.rakeTasks
+.idea/.generators
 coverage
 .DS_Store
