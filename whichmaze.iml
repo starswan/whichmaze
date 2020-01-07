@@ -56,7 +56,7 @@
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.7.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jasmine (v2.3.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jasmine-core (v2.3.4, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jasmine-core (v3.5.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.9.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.3.5, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.6, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
@@ -68,7 +68,7 @@
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.13.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.10.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="phantomjs (v1.9.8.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="phantomjs (v2.1.1.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v2.0.8, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v5.0.7.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
