@@ -10,16 +10,16 @@ RSpec.describe Maze, :type => :model do
   describe "creating an invalid maze should fail" do
     it "should not allow height values above 100" do
       maze = Maze.new valid_attributes.merge(:height => 101)
-      expect(maze.save).to be(false)
+      expect(maze).not_to be_valid
     end
     it "should not allow height values below 2" do
       maze = Maze.new valid_attributes.merge(:height => 1)
-      expect(maze.save).to be(false)
+      expect(maze).not_to be_valid
     end
 
     it "should not allow width values above 100" do
       maze = Maze.new valid_attributes.merge(:width => 101)
-      expect(maze.save).to be(false)
+      expect(maze).not_to be_valid
     end
     it "should not allow width values below 2" do
       maze = Maze.new valid_attributes.merge(:width => 1)
