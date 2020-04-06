@@ -26,21 +26,23 @@
     </content>
     <orderEntry type="jdk" jdkName="RVM: ruby-2.5.7 [maze]" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="actioncable (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionpack (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionview (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activejob (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activemodel (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activerecord (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activesupport (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="arel (v8.0.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actioncable (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionpack (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionview (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activejob (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activemodel (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activestorage (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activesupport (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="arel (v9.0.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="autoprefixer-rails (v9.4.8, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="binding_of_caller (v0.8.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.4.6, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v3.4.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass-extras (v0.0.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.17.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.17.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v6.0.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v4.2.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.4.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
@@ -49,7 +51,7 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug_inspector (v0.0.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="docile (v1.1.5, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="docile (v1.3.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.9.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.25, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
@@ -63,20 +65,23 @@
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.2.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.4.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="marcel (v0.3.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="method_source (v1.0.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mimemagic (v0.3.4, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.0.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.4.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.14.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.3.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.10.9, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="phantomjs (v2.1.1.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v2.2.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v1.1.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-controller-testing (v1.0.4, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.0.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.3.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="railties (v5.1.7, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="railties (v5.2.4.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.10.3, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.9.10, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
@@ -92,7 +97,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sassc (v2.0.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sdoc (v0.4.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.10.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.10.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.12.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring (v1.3.6, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v3.7.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.2.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
@@ -105,7 +110,7 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.6, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.7.2, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v2.3.0, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.6.5, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.7.1, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.4, RVM: ruby-2.5.7 [maze]) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
